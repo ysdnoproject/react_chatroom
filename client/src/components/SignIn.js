@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {  browserHistory } from 'react-router';
 import Singleton from '../socket'
 
 export default class SignIn extends Component {
@@ -13,8 +12,8 @@ export default class SignIn extends Component {
       event.preventDefault();
       const username = event.target.value.trim();
       console.log(username)
-      this.socket.emit('signIn', username);
-      browserHistory.push('/chat');
+      // this.socket.emit('signIn', username);
+      // browserHistory.push('/chat');
     }
   }
 

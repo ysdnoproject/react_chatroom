@@ -1,5 +1,5 @@
 {
-  "name": "react_chatroom",
+  "name": "react_chatroom_client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
