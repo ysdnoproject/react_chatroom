@@ -1,8 +1,9 @@
+import io from 'socket.io-client';
+
 const Singleton = (function () {
   let instance;
 
   function createInstance() {
-    const io = require('socket.io-client')
     const socket = io.connect();
     return socket;
   }
