@@ -1,0 +1,2 @@
+export const USER_MESSAGE = 'USER_MESSAGE';
+export const SYSTEM_MESSAGE = 'SYSTEM_MESSAGE';
