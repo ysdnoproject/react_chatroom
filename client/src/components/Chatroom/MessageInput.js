@@ -1,0 +1,29 @@
+/**
+ * Created by hshen on 9/24/16.
+ */
+
+import React, {Component, PropTypes} from 'react';
+
+export default class MessageInput extends Component {
+
+  handleKeyDown(event) {
+    if (event.which === 13) {
+      event.preventDefault();
+      const text = event.target.value;
+      if (text.length > 0) {
+        this.props.sendMessage(text);
+        this.refs.input.value = '';
+      }
+    }
+  }
+
+  render() {
+    return (
+      <input className="input-message"
+             placeholder="Type here..."
+             autoFocus="true"
+             ref="input"
+             onKeyDown={(e) => this.handleKeyDown(e)}/>
+    );
+  }
+}
