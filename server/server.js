@@ -1,26 +1,27 @@
 // Import modules
-var express = require('express');
-var path = require('path');
-var ejs = require('ejs');
+const ejs = require('ejs')
+const path = require('path')
+const express = require('express')
+const app = express()
+const http = require('http').Server(app)
+const port = process.env.PORT || 3000;
+http.listen(port, () => {console.log('listening on *:'+port)})
+const io = require('socket.io')(http);
 
-// Create server
-var app = express()
-  , server = require('http').createServer(app)
-  , io = require('socket.io').listen(server);
-var port = process.env.PORT || 3000;
-server.listen(port);
 
 // Return index.html for '/'
-app.get('/', function (req, res) {
-    res.render('index');
-});
+//dev env
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/index.html')));
 
-// Set path for views and static resources
-app.set('views', './client/public');
-app.set('view engine', 'html');
-app.engine('html', ejs.renderFile);
-app.use('/static', express.static('./client/build'));
+//prod env
+// app.get('/', (req, res) => res.render('index'));
+// app.set('views', __dirname + '/../client/build');
+// app.set('view engine', 'html');
+// app.engine('html', ejs.renderFile);
+// app.use('/static', express.static(__dirname + '/../client/build/static'));
+// app.use('/service-worker.js', express.static(__dirname + '/../client/build'));
 
+//
 var userNumber = 0;
 
 io.sockets.on('connection', function (socket) {
@@ -40,6 +41,8 @@ io.sockets.on('connection', function (socket) {
         socket.userName = userName;
         ++userNumber;
         signedIn = true;
+
+        console.log(userName)
 
         io.sockets.emit('userJoined', {
             userName: userName,

@@ -12,7 +12,7 @@ export default class SignIn extends Component {
       event.preventDefault();
       const username = event.target.value.trim();
       console.log(username)
-      // this.socket.emit('signIn', username);
+      this.socket.emit('signIn', username);
       // browserHistory.push('/chat');
     }
   }
