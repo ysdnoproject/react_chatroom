@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Singleton from '../../socket'
 import MessageList from "./MessageList";
 import MessageInput from "./MessageInput";
-import MessageItem from "./MessageItem";
+import '../../css/chat.css'
 
 export default class Chatroom extends Component {
 

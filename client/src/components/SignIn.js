@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Singleton from '../socket'
 import {withRouter} from "react-router-dom";
+import '../css/signIn.css'
 
 class SignIn extends Component {
   constructor(props, context) {
