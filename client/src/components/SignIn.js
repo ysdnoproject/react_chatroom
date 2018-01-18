@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
-import Singleton from '../socket'
+import Singleton from '../socket';
 import {withRouter} from "react-router-dom";
-import '../css/signIn.css'
+import '../css/signIn.css';
 
 class SignIn extends Component {
   constructor(props, context) {
     super(props, context);
     this.socket = Singleton.getInstance();
     this.socket.on('signInSuccess', function (data) {
-      console.log(data);
       props.history.push("/chat");
     });
   }
@@ -17,13 +16,11 @@ class SignIn extends Component {
     if (event.which === 13) {
       event.preventDefault();
       const username = event.target.value.trim();
-      console.log(username)
       this.socket.emit('signIn', username);
     }
   }
 
   render() {
-    const {messages} = this.props;
     return (
       <div className="sign-in">
         <div className="form">
