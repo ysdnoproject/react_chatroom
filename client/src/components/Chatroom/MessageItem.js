@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import * as messageTypes from '../../constants/MessageTypes'
+import PropTypes from 'prop-types';
 
 export default class MessageItem extends React.Component {
   render() {
@@ -37,4 +38,21 @@ export default class MessageItem extends React.Component {
     const index = Math.abs(hash % COLORS.length);
     return COLORS[index];
   }
+}
+
+//use exact is more strict than shape (see https://github.com/facebook/prop-types/pull/41)
+const MessagePropTypes = PropTypes.oneOfType([
+  PropTypes.exact({
+    type: PropTypes.oneOf([messageTypes.USER_MESSAGE]),
+    userName: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+  }),
+  PropTypes.exact({
+    type: PropTypes.oneOf([messageTypes.SYSTEM_MESSAGE]),
+    text: PropTypes.string.isRequired,
+  })
+]).isRequired
+
+MessageItem.propTypes = {
+  message: MessagePropTypes
 }

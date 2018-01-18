@@ -3,6 +3,7 @@ import Singleton from '../../socket'
 import MessageList from "./MessageList";
 import MessageInput from "./MessageInput";
 import '../../css/chat.css'
+import PropTypes from 'prop-types';
 
 export default class Chatroom extends Component {
 
@@ -47,4 +48,12 @@ export default class Chatroom extends Component {
       </div>
     );
   }
+}
+
+Chatroom.propTypes = {
+  receiveMessage: PropTypes.func.isRequired,
+  userJoined: PropTypes.func.isRequired,
+  userLeft: PropTypes.func.isRequired,
+  sendMessage: PropTypes.func.isRequired,
+  messages: PropTypes.array.isRequired,
 }

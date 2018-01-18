@@ -1,7 +1,5 @@
-import React from 'react'
 import * as actionTypes from '../constants/ActionTypes'
 import * as messageTypes from '../constants/MessageTypes'
-
 
 const initialState = {
   messages: [{
