@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Singleton from '../socket'
 import {withRouter} from "react-router-dom";
 
@@ -6,7 +6,7 @@ class SignIn extends Component {
   constructor(props, context) {
     super(props, context);
     this.socket = Singleton.getInstance();
-    this.socket.on('signInSuccess',function (data) {
+    this.socket.on('signInSuccess', function (data) {
       console.log(data);
       props.history.push("/chat");
     });
@@ -22,7 +22,7 @@ class SignIn extends Component {
   }
 
   render() {
-    const { messages} = this.props;
+    const {messages} = this.props;
     return (
       <div className="sign-in">
         <div className="form">
