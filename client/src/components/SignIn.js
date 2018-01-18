@@ -6,6 +6,10 @@ class SignIn extends Component {
   constructor(props, context) {
     super(props, context);
     this.socket = Singleton.getInstance();
+    this.socket.on('signInSuccess',function (data) {
+      console.log(data);
+      props.history.push("/chat");
+    });
   }
 
   handleSignIn(event) {
@@ -14,7 +18,6 @@ class SignIn extends Component {
       const username = event.target.value.trim();
       console.log(username)
       this.socket.emit('signIn', username);
-      this.props.history.push("/chat");
     }
   }
 

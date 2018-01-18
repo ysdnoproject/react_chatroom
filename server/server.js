@@ -44,6 +44,11 @@ io.sockets.on('connection', function (socket) {
 
         console.log(userName)
 
+      io.sockets.emit('signInSuccess', {
+        userName: userName,
+        userNumber: userNumber
+      });
+
         io.sockets.emit('userJoined', {
             userName: userName,
             userNumber: userNumber
