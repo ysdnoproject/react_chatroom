@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './css/index.css';
 import registerServiceWorker from './registerServiceWorker';
-// import { render } from 'react-dom'
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'
 import messages from './reducers/MessageReducer'
