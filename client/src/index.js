@@ -4,7 +4,7 @@ import './css/index.css';
 import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import messages from './reducers/MessageReducer';
+import reducer from './reducers/Reducer';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import SignIn from "./components/SignIn";
 import ChatroomContainer from "./containers/ChatroomContainer";
@@ -21,7 +21,7 @@ const initState = {
 // const store = createStore(messages, initState)
 
 //only dev
-const store = createStore(messages, initState, devToolsEnhancer(
+const store = createStore(reducer, initState, devToolsEnhancer(
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
 ));
 
