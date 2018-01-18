@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../action/actions';
 import Chatroom from '../components/Chatroom/Chatroom';
+import bindActionCreators from "redux/src/bindActionCreators";
 
 const mapStateToProps = state => {
   return {
@@ -9,6 +10,12 @@ const mapStateToProps = state => {
   }
 }
 
+const ChatroomContainer = connect(
+  mapStateToProps,
+  actions
+)(Chatroom)
+
+// difference???
 // const mapDispatchToProps = (dispatch, ownProps) => {
 //   return bindActionCreators({
 //     receiveMessage: actions.receiveMessage,
@@ -17,10 +24,10 @@ const mapStateToProps = state => {
 //     userLeft: actions.userLeft
 //   }, dispatch);
 // }
-
-const ChatroomContainer = connect(
-  mapStateToProps,
-  actions
-)(Chatroom)
+//
+// const ChatroomContainer = connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(Chatroom)
 
 export default ChatroomContainer
