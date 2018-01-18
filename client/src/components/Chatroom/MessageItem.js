@@ -29,11 +29,15 @@ export default class MessageItem extends React.Component {
       '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
       '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
     ];
-    // Compute hash code
-    let hash = 7;
-    for (let i = 0; i < userName.length; i++) {
-      hash = userName.charCodeAt(i) + (hash << 5) - hash;
+
+    // Compute hash code(see https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript-jquery:)
+    let hash = 0, i, chr;
+    for (i = 0; i < userName.length; i++) {
+      chr = userName.charCodeAt(i);
+      hash = ((hash << 5) - hash) + chr;
+      hash |= 0; // Convert to 32bit integer
     }
+
     // Calculate color
     const index = Math.abs(hash % COLORS.length);
     return COLORS[index];
