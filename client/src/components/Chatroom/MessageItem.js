@@ -1,5 +1,5 @@
 import React from 'react';
-import * as messageTypes from '../../constants/MessageTypes'
+import * as messageTypes from '../../constants/MessageTypes';
 import PropTypes from 'prop-types';
 
 export default class MessageItem extends React.Component {

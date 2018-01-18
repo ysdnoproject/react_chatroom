@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import registerServiceWorker from './registerServiceWorker';
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
-import messages from './reducers/MessageReducer'
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import messages from './reducers/MessageReducer';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import SignIn from "./components/SignIn";
 import ChatroomContainer from "./containers/ChatroomContainer";

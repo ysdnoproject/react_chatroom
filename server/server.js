@@ -1,13 +1,13 @@
 // Import modules
-const ejs = require('ejs')
-const path = require('path')
-const express = require('express')
-const app = express()
-const http = require('http').Server(app)
+const ejs = require('ejs');
+const path = require('path');
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);
 const port = process.env.PORT || 3000;
 http.listen(port, () => {
   console.log('listening on *:' + port)
-})
+});
 const io = require('socket.io')(http);
 
 
@@ -24,16 +24,16 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/
 // app.use('/service-worker.js', express.static(__dirname + '/../client/build'));
 
 //
-var userNumber = 0;
+let userNumber = 0;
 
 io.sockets.on('connection', function (socket) {
-  var signedIn = false;
+  let signedIn = false;
 
   socket.on('newMessage', function (text) {
     io.sockets.emit('newMessage', {
       userName: socket.userName,
       text: text
-    })
+    });
   });
 
   socket.on('signIn', function (userName) {
@@ -43,8 +43,6 @@ io.sockets.on('connection', function (socket) {
     socket.userName = userName;
     ++userNumber;
     signedIn = true;
-
-    console.log(userName)
 
     io.sockets.emit('signInSuccess', {
       userName: userName,

@@ -1,8 +1,5 @@
-/**
- * Created by hshen on 9/24/16.
- */
-
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 export default class MessageInput extends Component {
 
@@ -26,4 +23,8 @@ export default class MessageInput extends Component {
              onKeyDown={(e) => this.handleKeyDown(e)}/>
     );
   }
+}
+
+MessageInput.propTypes = {
+  sendMessage: PropTypes.func.isRequired,
 }

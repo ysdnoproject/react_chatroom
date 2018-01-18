@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageItem from "./MessageItem";
+import PropTypes from 'prop-types';
 
 const MessageList = ({messages}) => (
   <div className="chat-area">
@@ -12,3 +13,7 @@ const MessageList = ({messages}) => (
 )
 
 export default MessageList
+
+MessageList.propTypes = {
+  messages: PropTypes.array.isRequired,
+}
