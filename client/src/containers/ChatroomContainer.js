@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../action/actions';
 import Chatroom from '../components/Chatroom/Chatroom';
-import bindActionCreators from "redux/src/bindActionCreators";
+// import bindActionCreators from "redux/src/bindActionCreators";
 
 const mapStateToProps = state => {
   return {
