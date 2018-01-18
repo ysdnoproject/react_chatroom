@@ -13,15 +13,15 @@ const io = require('socket.io')(http);
 
 // Return index.html for '/'
 //dev env
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/index.html')));
+// app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/index.html')));
 
 //prod env
-// app.get('/', (req, res) => res.render('index'));
-// app.set('views', __dirname + '/../client/build');
-// app.set('view engine', 'html');
-// app.engine('html', ejs.renderFile);
-// app.use('/static', express.static(__dirname + '/../client/build/static'));
-// app.use('/service-worker.js', express.static(__dirname + '/../client/build'));
+app.get('/', (req, res) => res.render('index'));
+app.set('views', __dirname + '/../client/build');
+app.set('view engine', 'html');
+app.engine('html', ejs.renderFile);
+app.use('/static', express.static(__dirname + '/../client/build/static'));
+app.use('/service-worker.js', express.static(__dirname + '/../client/build'));
 
 //
 let userNumber = 0;

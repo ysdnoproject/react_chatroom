@@ -18,12 +18,12 @@ const initState = {
   }],
 };
 
-// const store = createStore(messages, initState)
+const store = createStore(reducer, initState)
 
 //only dev
-const store = createStore(reducer, initState, devToolsEnhancer(
-  // Specify name here, actionsBlacklist, actionsCreators and other options if needed
-));
+// const store = createStore(reducer, initState, devToolsEnhancer(
+//   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+// ));
 
 //必须要div 否则 会报错(div总是会render /  应该用switch)
 ReactDOM.render(
