@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 // import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
 import messages from './reducers/MessageReducer'
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import SignIn from "./components/SignIn";
@@ -17,7 +17,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path="/chat" component={ChatroomContainer}></Route>
-        <Route path="/" component={SignIn} />
+        <Route path="/" component={SignIn}/>
       </Switch>
     </BrowserRouter>
   </Provider>,
