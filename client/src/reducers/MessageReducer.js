@@ -1,14 +1,7 @@
 import * as actionTypes from '../constants/ActionTypes';
 import * as messageTypes from '../constants/MessageTypes';
 
-const initialState = {
-  messages: [{
-    type: messageTypes.SYSTEM_MESSAGE,
-    text: 'Welcome to our chatting room!'
-  }],
-};
-
-export default function messages(state = initialState, action) {
+export default function messages(state, action) {
   switch (action.type) {
     case actionTypes.RECEIVE_MESSAGE:
       const message = action.message;

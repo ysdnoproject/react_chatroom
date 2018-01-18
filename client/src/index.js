@@ -9,11 +9,19 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import SignIn from "./components/SignIn";
 import ChatroomContainer from "./containers/ChatroomContainer";
 import {devToolsEnhancer} from "redux-devtools-extension";
+import {SYSTEM_MESSAGE} from "./constants/MessageTypes";
 
-// let store = createStore(messages)
+const initState = {
+  messages: [{
+    type: SYSTEM_MESSAGE,
+    text: 'Welcome to our chatting room!'
+  }],
+};
+
+// const store = createStore(messages, initState)
 
 //only dev
-const store = createStore(messages, /* preloadedState, */ devToolsEnhancer(
+const store = createStore(messages, initState, devToolsEnhancer(
   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
 ));
 
