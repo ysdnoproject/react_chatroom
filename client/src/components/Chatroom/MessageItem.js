@@ -20,6 +20,8 @@ export default class MessageItem extends React.Component {
             {message.text}
           </li>
         );
+      default:
+        return null;
     }
   }
 
