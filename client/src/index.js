@@ -6,11 +6,20 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import messages from './reducers/MessageReducer'
-import App from './components/App'
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import SignIn from "./components/SignIn";
+import ChatroomContainer from "./containers/ChatroomContainer";
 
 let store = createStore(messages)
-ReactDOM.render(<Provider store={store}>
-    <App />
+//必须要div 否则 会报错(div总是会render /  应该用switch)
+ReactDOM.render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/chat" component={ChatroomContainer}></Route>
+        <Route path="/" component={SignIn} />
+      </Switch>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();

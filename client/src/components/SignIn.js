@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Singleton from '../socket'
+import {withRouter} from "react-router-dom";
 
-export default class SignIn extends Component {
+class SignIn extends Component {
   constructor(props, context) {
     super(props, context);
     this.socket = Singleton.getInstance();
@@ -13,7 +14,7 @@ export default class SignIn extends Component {
       const username = event.target.value.trim();
       console.log(username)
       this.socket.emit('signIn', username);
-      // browserHistory.push('/chat');
+      this.props.history.push("/chat");
     }
   }
 
@@ -33,3 +34,5 @@ export default class SignIn extends Component {
     );
   }
 }
+
+export default withRouter(SignIn);
