@@ -17,7 +17,7 @@ production和dev的代码有所区别：TODO
 ### production:
 ```
 cd project_path
-git co production
+git checkout production
 cd client
 npm install
 npm run build
@@ -31,13 +31,13 @@ node server.js
 ### dev:
 ```
 cd project_path
-git co master
+git checkout master
 cd client
 npm install
 npm start
 #open a new terminal
 cd project_path
-git co master
+git checkout master
 cd server
 npm install
 PORT=5000 node server.js
