@@ -22,6 +22,7 @@ cd client
 npm install
 npm run build
 cd ../server
+npm install
 node server.js
 ```
 然后打开 `localhost:3000`
@@ -38,6 +39,7 @@ npm start
 cd project_path
 git co master
 cd server
+npm install
 PORT=5000 node server.js
 ```
 然后打开 `localhost:3000`
