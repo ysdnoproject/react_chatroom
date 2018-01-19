@@ -13,7 +13,6 @@
 
 
 ## 搭建:
-production和dev的代码有所区别：TODO
 ### production:
 ```
 cd project_path
@@ -43,6 +42,12 @@ npm install
 npm start
 ```
 然后打开 `localhost:3000`
+
+## production和dev的代码区别：
+- 遵循[redux-devtools](https://github.com/gaearon/redux-devtools)的指导。devToolsEnhancer在production里去掉。
+即 [index.js](client/src/index.js) createStore不应该带有devToolsEnhancer
+
+- [server.js](server/server.js)配置有所区别
 
 
 
