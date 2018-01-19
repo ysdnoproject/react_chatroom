@@ -9,7 +9,7 @@
 
 ## 在线演示:
 
-[view](https://react-chatroom-yuan.herokuapp.com/chat)
+[view](https://react-chatroom-yuan.herokuapp.com)
 
 
 ## 搭建:
