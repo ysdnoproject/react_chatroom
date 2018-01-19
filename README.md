@@ -1,10 +1,10 @@
 # react_chatroom
 
-##用到的技术：
-###client: 
+## 用到的技术：
+### client: 
 [react js](https://reactjs.org/) [redux](https://github.com/reactjs/redux) [react-redux](https://github.com/reactjs/react-redux) [react-router](https://github.com/ReactTraining/react-router) [socket.io-client](https://socket.io/) [prop-types](https://github.com/facebook/prop-types) 
 
-###server:
+### server:
 [expressjs](http://expressjs.com/) [socket.io](https://socket.io/)
 
 ## 在线演示:
@@ -14,7 +14,7 @@
 
 ## 搭建:
 production和dev的代码有所区别：TODO
-###production:
+### production:
 ```
 cd project_path
 git co production
@@ -27,7 +27,7 @@ node server.js
 然后打开 `localhost:3000`
 
 
-###dev:
+### dev:
 ```
 cd project_path
 git co master
