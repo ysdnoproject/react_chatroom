@@ -16,12 +16,15 @@ export default class Chatroom extends Component {
     const {receiveMessage, userJoined, userLeft} = this.props;
     this.socket.on('newMessage', function (msg) {
       receiveMessage(msg);
+      scrollToBottom();
     });
     this.socket.on('userJoined', function (data) {
       userJoined(data);
+      scrollToBottom();
     });
     this.socket.on('userLeft', function (data) {
       userLeft(data);
+      scrollToBottom();
     });
   }
 
@@ -41,6 +44,11 @@ export default class Chatroom extends Component {
       </div>
     );
   }
+}
+
+function scrollToBottom() {
+  let messagesWidget = document.querySelector(".messages");
+  messagesWidget.scrollTo(0, messagesWidget.scrollHeight)
 }
 
 Chatroom.propTypes = {
