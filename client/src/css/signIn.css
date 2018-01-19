@@ -1,5 +1,5 @@
 .sign-in {
-    background-color: #000;
+    background-image: url("../image/signIn.jpeg");
     height: 100%;
     position: absolute;
     width: 100%;
@@ -17,7 +17,6 @@
 .sign-in .form .username-input {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #fff;
     outline: none;
     padding-bottom: 15px;
     text-align: center;
