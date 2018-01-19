@@ -49,5 +49,5 @@ npm start
 
 - [server.js](server/server.js)配置有所区别
 
-
-
+## 杂谈
+- 推荐<https://www.heroku.com>可以免费部署个人项目，缺点就是国内速度会比较慢。
