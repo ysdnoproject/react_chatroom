@@ -17,11 +17,11 @@ const io = require('socket.io')(http);
 
 //prod env
 app.get('/', (req, res) => res.render('index'));
-app.set('views', __dirname + '/../client/build');
+app.set('views', __dirname + '/build');
 app.set('view engine', 'html');
 app.engine('html', ejs.renderFile);
-app.use('/static', express.static(__dirname + '/../client/build/static'));
-app.use('/service-worker.js', express.static(__dirname + '/../client/build'));
+app.use('/static', express.static(__dirname + '/build/static'));
+app.use('/service-worker.js', express.static(__dirname + '/build'));
 
 //
 let userNumber = 0;
