@@ -32,15 +32,15 @@ node server.js
 ```
 cd project_path
 git checkout master
-cd client
-npm install
-npm start
-#open a new terminal
-cd project_path
-git checkout master
 cd server
 npm install
 PORT=5000 node server.js
+#open a new terminal
+cd project_path
+git checkout master
+cd client
+npm install
+npm start
 ```
 然后打开 `localhost:3000`
 
