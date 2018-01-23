@@ -2,10 +2,18 @@
 
 ## 用到的技术：
 ### client: 
-[react js](https://reactjs.org/) [redux](https://github.com/reactjs/redux) [react-redux](https://github.com/reactjs/react-redux) [react-router](https://github.com/ReactTraining/react-router) [socket.io-client](https://socket.io/) [prop-types](https://github.com/facebook/prop-types) 
+[react js](https://reactjs.org/) 
+[redux](https://github.com/reactjs/redux) 
+[react-redux](https://github.com/reactjs/react-redux) 
+[react-router](https://github.com/ReactTraining/react-router) 
+[socket.io-client](https://socket.io/) 
+[prop-types](https://github.com/facebook/prop-types) 
 
 ### server:
-[expressjs](http://expressjs.com/) [socket.io](https://socket.io/)
+[expressjs](http://expressjs.com/) 
+[socket.io](https://socket.io/)
+[redis](https://redis.io/)
+[node_redis](https://github.com/NodeRedis/node_redis)
 
 ## 在线演示:
 
