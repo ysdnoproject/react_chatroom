@@ -14,26 +14,21 @@ class SignIn extends Component {
 
   handleSignIn(event) {
     if (event.which === 13) {
-      event.preventDefault();
-      const username = event.target.value.trim();
-      this.socket.emit('signIn', username);
+      this.signIn(event);
     }
   }
 
-  /**
-   * @description into chatroom
-   */
-  intoChat(e){
+  signIn(e){
     e.preventDefault();
-    const username = document.getElementById('username').value.trim();
+    const username = this.refs.username.value.trim();
 
-    // 判断名字是否为空 
-    if (username == '') {
-      alert('请你的输入名字~~~');
-      return false;
+    if (username) {
+      this.socket.emit('signIn', username);
+    } else {
+      alert('请输入内容~');
     }
 
-    this.socket.emit('signIn', username);
+    this.refs.username.focus();
   }
 
   render() {
@@ -43,13 +38,14 @@ class SignIn extends Component {
           <h3 className="title">Who are you?</h3>
           <input className="username-input" type="text"
                  id = "username"
+                 ref = "username"
                  onKeyDown={(e) => this.handleSignIn(e)}
                  maxLength={10}
                  autoFocus="true"
           />
           <button className="intochat"
-                  onClick={(e) => this.intoChat(e)}
-          >进入</button>
+                  onClick={(e) => this.signIn(e)}
+          >Join</button>
         </div>
       </div>
     );
