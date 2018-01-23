@@ -1,5 +1,7 @@
 # react_chatroom
 
+##感谢[kisn](https://github.com/Kisnnnnn)的友情帮助
+
 ##  新增 pending 分支 测试版本
 ### 更新 2018年01月23日15:43:54
 #### 1、优化界面布局
