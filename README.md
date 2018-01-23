@@ -10,6 +10,7 @@
 [react-router](https://github.com/ReactTraining/react-router) 
 [socket.io-client](https://socket.io/) 
 [prop-types](https://github.com/facebook/prop-types) 
+[sweetalert2](https://github.com/sweetalert2/sweetalert2)
 
 ### server:
 [expressjs](http://expressjs.com/) 

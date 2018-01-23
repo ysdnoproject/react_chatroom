@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert2'
 
 export default class MessageInput extends Component {
 
@@ -12,14 +13,18 @@ export default class MessageInput extends Component {
   sendMsg(e){
     e.preventDefault();
     const text = this.refs.input.value.trim();
+    const inputWidget = this.refs.input;
     if (text.length > 0) {
       this.props.sendMessage(text);
-      this.refs.input.value = '';
+      inputWidget.value = '';
+      inputWidget.focus();
     }else{
-      alert('请输入内容~');
+      swal('Please enter message', '', 'warning').then(
+        function () {
+          inputWidget.focus();
+        }
+      );
     }
-
-    this.refs.input.focus();
   }
 
   render() {
