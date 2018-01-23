@@ -20,16 +20,36 @@ class SignIn extends Component {
     }
   }
 
+  /**
+   * @description into chatroom
+   */
+  intoChat(e){
+    e.preventDefault();
+    const username = document.getElementById('username').value.trim();
+
+    // 判断名字是否为空 
+    if (username == '') {
+      alert('请你的输入名字~~~');
+      return false;
+    }
+
+    this.socket.emit('signIn', username);
+  }
+
   render() {
     return (
       <div className="sign-in">
         <div className="form">
           <h3 className="title">Who are you?</h3>
           <input className="username-input" type="text"
+                 id = "username"
                  onKeyDown={(e) => this.handleSignIn(e)}
                  maxLength={10}
                  autoFocus="true"
           />
+          <button className="intochat"
+                  onClick={(e) => this.intoChat(e)}
+          >进入</button>
         </div>
       </div>
     );
