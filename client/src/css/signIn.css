@@ -16,7 +16,8 @@
 
 .sign-in .form .username-input {
     background-color: transparent;
-    border: none;
+    border: 1px solid #fff;
+    border-radius: 5px;
     outline: none;
     padding-bottom: 15px;
     text-align: center;
@@ -29,7 +30,8 @@
     font-size: 200%;
 }
 
-.sign-in .title, .sign-in .username-input {
+.sign-in .title,
+.sign-in .username-input {
     color: #fff;
     font-weight: 100;
 }
