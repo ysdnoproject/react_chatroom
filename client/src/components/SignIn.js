@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Singleton from '../socket';
 import {withRouter} from "react-router-dom";
 import '../css/signIn.css';
+import swal from 'sweetalert2';
 
 class SignIn extends Component {
   constructor(props, context) {
@@ -25,10 +26,8 @@ class SignIn extends Component {
     if (username) {
       this.socket.emit('signIn', username);
     } else {
-      alert('请输入内容~');
+      swal('Please enter username', '', 'warning');
     }
-
-    this.refs.username.focus();
   }
 
   render() {
