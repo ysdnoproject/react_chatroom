@@ -61,7 +61,6 @@ io.sockets.on('connection', function (socket) {
   socket.on('disconnect', function () {
     redisClient.hget(address, "username", function (err, obj){
       if (obj) {
-        redisClient.del(address);
         --userNumber;
 
         io.sockets.emit('userLeft', {
