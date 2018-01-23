@@ -11,6 +11,7 @@ http.listen(port, () => {
 const io = require('socket.io')(http);
 const redis = require("redis");
 const redisClient = redis.createClient();
+const HashMap = require('hashmap');
 
 redisClient.on("error", function (err) {
   console.log("Error " + err);
@@ -28,24 +29,23 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/
 // app.use('/static', express.static(__dirname + '/../client/build/static'));
 // app.use('/service-worker.js', express.static(__dirname + '/../client/build'));
 
-let userNumber = 0;
+let users = new HashMap();
 
 io.sockets.on('connection', function (socket) {
   let address = socket.handshake.address;
 
   socket.on('signIn', function (username) {
     redisClient.hset(address, "username", username);
-
-    ++userNumber;
+    users.set(address, username);
 
     io.sockets.emit('signInSuccess', {
       username: username,
-      userNumber: userNumber
+      userNumber: users.count()
     });
 
     io.sockets.emit('userJoined', {
       username: username,
-      userNumber: userNumber
+      userNumber: users.count()
     });
   });
 
@@ -61,11 +61,11 @@ io.sockets.on('connection', function (socket) {
   socket.on('disconnect', function () {
     redisClient.hget(address, "username", function (err, obj){
       if (obj) {
-        --userNumber;
+        users.remove(address);
 
         io.sockets.emit('userLeft', {
           username: obj,
-          userNumber: userNumber
+          userNumber: users.count()
         });
       }
     });
