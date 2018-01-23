@@ -7,10 +7,10 @@ export default class MessageItem extends React.Component {
     const {message} = this.props;
     switch (message.type) {
       case messageTypes.USER_MESSAGE:
-        const userNameColor = this._getUserNameColor(message.userName);
+        const usernameColor = this._getUsernameColor(message.username);
         return (
           <li className="user-message">
-            <span className="user-name" style={{color: userNameColor}}>{message.userName}</span>
+            <span className="user-name" style={{color: usernameColor}}>{message.username}</span>
             <span className="message-body">{message.text}</span>
           </li>
         );
@@ -25,7 +25,7 @@ export default class MessageItem extends React.Component {
     }
   }
 
-  _getUserNameColor(userName) {
+  _getUsernameColor(username) {
     const COLORS = [
       '#e21400', '#91580f', '#f8a700', '#f78b00',
       '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
@@ -34,8 +34,8 @@ export default class MessageItem extends React.Component {
 
     // Compute hash code(see https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript-jquery:)
     let hash = 0, i, chr;
-    for (i = 0; i < userName.length; i++) {
-      chr = userName.charCodeAt(i);
+    for (i = 0; i < username.length; i++) {
+      chr = username.charCodeAt(i);
       hash = ((hash << 5) - hash) + chr;
       hash |= 0; // Convert to 32bit integer
     }
@@ -50,7 +50,7 @@ export default class MessageItem extends React.Component {
 const MessagePropTypes = PropTypes.oneOfType([
   PropTypes.exact({
     type: PropTypes.oneOf([messageTypes.USER_MESSAGE]),
-    userName: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
   }),
   PropTypes.exact({
