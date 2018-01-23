@@ -9,7 +9,13 @@ http.listen(port, () => {
   console.log('listening on *:' + port)
 });
 const io = require('socket.io')(http);
+const redis = require("redis");
+const redisClient = redis.createClient();
+const HashMap = require('hashmap');
 
+redisClient.on("error", function (err) {
+  console.log("Error " + err);
+});
 
 // Return index.html for '/'
 //dev env
@@ -23,47 +29,45 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/
 // app.use('/static', express.static(__dirname + '/../client/build/static'));
 // app.use('/service-worker.js', express.static(__dirname + '/../client/build'));
 
-//
-let userNumber = 0;
+let users = new HashMap();
 
 io.sockets.on('connection', function (socket) {
-  let signedIn = false;
+  let address = socket.handshake.address;
 
-  socket.on('newMessage', function (text) {
-    io.sockets.emit('newMessage', {
-      userName: socket.userName,
-      text: text
-    });
-  });
-
-  socket.on('signIn', function (userName) {
-    if (signedIn) return;
-
-    // we store the username in the socket session for this client
-    socket.userName = userName;
-    ++userNumber;
-    signedIn = true;
+  socket.on('signIn', function (username) {
+    redisClient.hset(address, "username", username);
+    users.set(address, username);
 
     io.sockets.emit('signInSuccess', {
-      userName: userName,
-      userNumber: userNumber
+      username: username,
+      userNumber: users.count()
     });
 
     io.sockets.emit('userJoined', {
-      userName: userName,
-      userNumber: userNumber
+      username: username,
+      userNumber: users.count()
     });
   });
 
-  socket.on('disconnect', function () {
-    if (signedIn) {
-      --userNumber;
-
-      io.sockets.emit('userLeft', {
-        userName: socket.userName,
-        userNumber: userNumber
+  socket.on('newMessage', function (text) {
+    redisClient.hget(address, "username", function (err, obj){
+      io.sockets.emit('newMessage', {
+        username: obj,
+        text: text
       });
-    }
+    });
   });
 
+  socket.on('signOut', function () {
+    redisClient.hget(address, "username", function (err, obj){
+      if (obj) {
+        users.remove(address);
+
+        io.sockets.emit('userLeft', {
+          username: obj,
+          userNumber: users.count()
+        });
+      }
+    });
+  });
 });
