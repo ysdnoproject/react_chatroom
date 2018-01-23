@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Singleton from '../../socket';
+import SignOut from "../SignOut";
 import MessageList from "./MessageList";
 import MessageInput from "./MessageInput";
 import '../../css/chat.css';
@@ -10,10 +11,8 @@ export default class Chatroom extends Component {
   constructor(props, context) {
     super(props, context);
     this.socket = Singleton.getInstance();
-  }
 
-  componentWillMount() {
-    const {receiveMessage, userJoined, userLeft} = this.props;
+    const {receiveMessage, userJoined, userLeft} = props;
     this.socket.on('newMessage', function (msg) {
       receiveMessage(msg);
       scrollToBottom();
@@ -39,6 +38,7 @@ export default class Chatroom extends Component {
   render() {
     return (
       <div className="chat">
+        <SignOut />
         <MessageList messages={this.props.messages}/>
         <MessageInput sendMessage={(msg) => this.sendMessage(msg)}/>
       </div>
@@ -48,7 +48,9 @@ export default class Chatroom extends Component {
 
 function scrollToBottom() {
   let messagesWidget = document.querySelector(".messages");
-  messagesWidget.scrollTo(0, messagesWidget.scrollHeight)
+  if (messagesWidget) {
+    messagesWidget.scrollTo(0, messagesWidget.scrollHeight);
+  }
 }
 
 Chatroom.propTypes = {
