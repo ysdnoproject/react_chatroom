@@ -10,7 +10,7 @@ export default class MessageItem extends React.Component {
         const userNameColor = this._getUserNameColor(message.userName);
         return (
           <li className="user-message">
-            <span className="user-name" style={{color: userNameColor}}>{message.userName}</span>
+            <span className="user-name" style={{color: userNameColor}}>{message.userName}:</span>
             <span className="message-body">{message.text}</span>
           </li>
         );
