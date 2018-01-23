@@ -14,6 +14,7 @@
 [socket.io](https://socket.io/)
 [redis](https://redis.io/)
 [node_redis](https://github.com/NodeRedis/node_redis)
+[hashmap_js](https://github.com/flesler/hashmap)
 
 ## 在线演示:
 
