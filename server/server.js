@@ -58,7 +58,7 @@ io.sockets.on('connection', function (socket) {
     });
   });
 
-  socket.on('disconnect', function () {
+  socket.on('signOut', function () {
     redisClient.hget(address, "username", function (err, obj){
       if (obj) {
         users.remove(address);
