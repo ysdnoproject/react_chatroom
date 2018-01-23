@@ -1,5 +1,10 @@
 # react_chatroom
 
+##  新增 pending 分支 测试版本
+### 更新 2018年01月23日15:43:54
+#### 1、优化界面布局
+#### 2、新增按钮:进入、发送 优化交互
+
 ## 用到的技术：
 ### client: 
 [react js](https://reactjs.org/) [redux](https://github.com/reactjs/redux) [react-redux](https://github.com/reactjs/react-redux) [react-router](https://github.com/ReactTraining/react-router) [socket.io-client](https://socket.io/) [prop-types](https://github.com/facebook/prop-types) 
