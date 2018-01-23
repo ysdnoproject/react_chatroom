@@ -14,17 +14,17 @@ export default function messages(state = [], action) {
       return state.concat([{
         type: USER_MESSAGE,
         text: message.text,
-        userName: message.userName
+        username: message.username
       }]);
     case actionTypes.USER_JOINED:
       return state.concat([{
         type: messageTypes.SYSTEM_MESSAGE,
-        text: `${action.data.userName} joined! Now ${action.data.userNumber} participants.`
+        text: `${action.data.username} joined! Now ${action.data.userNumber} participants.`
       }]);
     case actionTypes.USER_LEFT:
       return state.concat([{
         type: messageTypes.SYSTEM_MESSAGE,
-        text: `${action.data.userName} left! Now ${action.data.userNumber} participants.`
+        text: `${action.data.username} left! Now ${action.data.userNumber} participants.`
       }]);
     case actionTypes.SEND_MESSAGE:
     default:
