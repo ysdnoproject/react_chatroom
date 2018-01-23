@@ -5,31 +5,21 @@ export default class MessageInput extends Component {
 
   handleKeyDown(event) {
     if (event.which === 13) {
-      event.preventDefault();
-      const text = event.target.value;
-      if (text.length > 0) {
-        this.props.sendMessage(text);
-        this.refs.input.value = '';
-      }else{
-        alert('请输入内容~');
-        return false;
-      }
+      this.sendMsg(event);
     }
   }
 
-  /**
-   * @description send mesaages
-   */
   sendMsg(e){
     e.preventDefault();
-    const text = document.getElementById('msg-txt').value;
+    const text = this.refs.input.value.trim();
     if (text.length > 0) {
       this.props.sendMessage(text);
       this.refs.input.value = '';
     }else{
       alert('请输入内容~');
-      return false;
     }
+
+    this.refs.input.focus();
   }
 
   render() {
@@ -41,9 +31,9 @@ export default class MessageInput extends Component {
               autoFocus="true"
               ref="input"
               onKeyDown={(e) => this.handleKeyDown(e)}/>
-        <button className = "sentbtn"
+        <button className = "sendbtn"
                 onClick = {(e) => this.sendMsg(e)}>
-        发送</button>
+        Send</button>
       </div>
     );
   }
