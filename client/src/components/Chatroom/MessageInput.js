@@ -12,9 +12,9 @@ export default class MessageInput extends Component {
 
   sendMsg(e){
     e.preventDefault();
-    const text = this.refs.input.value.trim();
-    const inputWidget = this.refs.input;
-    if (text.length > 0) {
+    const inputWidget = this.input;
+    const text = inputWidget.value.trim();
+    if (text) {
       this.props.sendMessage(text);
       inputWidget.value = '';
       inputWidget.focus();
@@ -34,7 +34,7 @@ export default class MessageInput extends Component {
               id = 'msg-txt'
               placeholder="Type here..."
               autoFocus="true"
-              ref="input"
+              ref={(input) => {this.input = input}}
               onKeyDown={(e) => this.handleKeyDown(e)}/>
         <button className = "sendbtn"
                 onClick = {(e) => this.sendMsg(e)}>

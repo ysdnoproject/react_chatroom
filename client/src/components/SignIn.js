@@ -14,7 +14,8 @@ class SignIn extends Component {
   signIn(e){
     e.preventDefault();
 
-    const username = this.refs.username.value.trim();
+    const inputWidget = this.input;
+    const username = inputWidget.value.trim();
     const socket = Singleton.getInstance();
 
     socket.removeAllListeners();
@@ -28,7 +29,11 @@ class SignIn extends Component {
     if (username) {
       socket.emit('signIn', username);
     } else {
-      swal('Please enter username', '', 'warning');
+      swal('Please enter username', '', 'warning').then(
+        function () {
+          inputWidget.focus();
+        }
+      );
     }
   }
 
@@ -39,7 +44,7 @@ class SignIn extends Component {
           <h3 className="title">Who are you?</h3>
           <input className="username-input" type="text"
                  id = "username"
-                 ref = "username"
+                 ref = {(input) => {this.input = input;}}
                  onKeyDown={(e) => this.handleSignIn(e)}
                  maxLength={10}
                  autoFocus="true"
