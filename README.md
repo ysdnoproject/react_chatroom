@@ -1,6 +1,6 @@
 # react_chatroom
 
-## 感谢[kisn](https://github.com/Kisnnnnn)的友情帮助
+## 感谢[Kisn](https://github.com/Kisnnnnn)的友情帮助
 
 ## 用到的技术：
 首先需要安装[redis](https://redis.io/)并在默认端口(6379)启动

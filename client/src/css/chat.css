@@ -31,8 +31,8 @@ ul {
 }
 
 .chat-area {
-    height: 100%;
-    padding-bottom: 120px;
+    height: calc(100% - 22px);
+    padding-bottom: calc(5vh + 10px);
 }
 
 .messages {

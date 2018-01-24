@@ -13,11 +13,14 @@ class SignIn extends Component {
 
   signIn(e){
     e.preventDefault();
-    const username = this.refs.username.value.trim();
 
+    const username = this.refs.username.value.trim();
     const socket = Singleton.getInstance();
+
+    socket.removeAllListeners();
     socket.open();
     const props = this.props;
+
     socket.on('signInSuccess', function (data) {
       props.history.push("/chat");
     });
