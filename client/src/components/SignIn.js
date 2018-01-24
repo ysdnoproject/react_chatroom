@@ -5,10 +5,6 @@ import '../css/signIn.css';
 import swal from 'sweetalert2';
 
 class SignIn extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   handleSignIn(event) {
     if (event.which === 13) {
       this.signIn(event);
