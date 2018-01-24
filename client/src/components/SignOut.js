@@ -13,6 +13,7 @@ class SignOut extends Component {
     event.preventDefault();
     this.socket.emit('signOut');
     this.props.history.push("/");
+    Singleton.closeConnection();
   }
 
   render() {

@@ -7,10 +7,6 @@ import swal from 'sweetalert2';
 class SignIn extends Component {
   constructor(props, context) {
     super(props, context);
-    this.socket = Singleton.getInstance();
-    this.socket.on('signInSuccess', function (data) {
-      props.history.push("/chat");
-    });
   }
 
   handleSignIn(event) {
@@ -23,8 +19,15 @@ class SignIn extends Component {
     e.preventDefault();
     const username = this.refs.username.value.trim();
 
+    const socket = Singleton.getInstance();
+    socket.open();
+    const props = this.props;
+    socket.on('signInSuccess', function (data) {
+      props.history.push("/chat");
+    });
+
     if (username) {
-      this.socket.emit('signIn', username);
+      socket.emit('signIn', username);
     } else {
       swal('Please enter username', '', 'warning');
     }
