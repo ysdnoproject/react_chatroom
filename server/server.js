@@ -11,6 +11,7 @@ http.listen(port, () => {
 const io = require('socket.io')(http);
 const redis = require("redis");
 const redisClient = redis.createClient();
+const HashMap = require('hashmap');
 
 redisClient.on("error", function (err) {
   console.log("Error " + err);
@@ -21,31 +22,30 @@ redisClient.on("error", function (err) {
 // app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/index.html')));
 
 //prod env
-app.get('/', (req, res) => res.render('index'));
+app.get('/[chat]', (req, res) => res.render('index'));
 app.set('views', __dirname + '/build');
 app.set('view engine', 'html');
 app.engine('html', ejs.renderFile);
 app.use('/static', express.static(__dirname + '/build/static'));
 app.use('/service-worker.js', express.static(__dirname + '/build'));
 
-let userNumber = 0;
+let users = new HashMap();
 
 io.sockets.on('connection', function (socket) {
   let address = socket.handshake.address;
 
   socket.on('signIn', function (username) {
     redisClient.hset(address, "username", username);
-
-    ++userNumber;
+    users.set(address, username);
 
     io.sockets.emit('signInSuccess', {
       username: username,
-      userNumber: userNumber
+      userNumber: users.count()
     });
 
     io.sockets.emit('userJoined', {
       username: username,
-      userNumber: userNumber
+      userNumber: users.count()
     });
   });
 
@@ -58,15 +58,14 @@ io.sockets.on('connection', function (socket) {
     });
   });
 
-  socket.on('disconnect', function () {
+  socket.on('signOut', function () {
     redisClient.hget(address, "username", function (err, obj){
       if (obj) {
-        redisClient.del(address);
-        --userNumber;
+        users.remove(address);
 
         io.sockets.emit('userLeft', {
           username: obj,
-          userNumber: userNumber
+          userNumber: users.count()
         });
       }
     });
