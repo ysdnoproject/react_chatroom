@@ -1,26 +1,45 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert2'
 
 export default class MessageInput extends Component {
 
   handleKeyDown(event) {
     if (event.which === 13) {
-      event.preventDefault();
-      const text = event.target.value;
-      if (text.length > 0) {
-        this.props.sendMessage(text);
-        this.refs.input.value = '';
-      }
+      this.sendMsg(event);
+    }
+  }
+
+  sendMsg(e){
+    e.preventDefault();
+    const inputWidget = this.input;
+    const text = inputWidget.value.trim();
+    if (text) {
+      this.props.sendMessage(text);
+      inputWidget.value = '';
+      inputWidget.focus();
+    }else{
+      swal('Please enter message', '', 'warning').then(
+        function () {
+          inputWidget.focus();
+        }
+      );
     }
   }
 
   render() {
     return (
-      <input className="input-message"
-             placeholder="Type here..."
-             autoFocus="true"
-             ref="input"
-             onKeyDown={(e) => this.handleKeyDown(e)}/>
+      <div className="sent-frame">
+        <input className="input-message"
+              id = 'msg-txt'
+              placeholder="Type here..."
+              autoFocus="true"
+              ref={(input) => {this.input = input}}
+              onKeyDown={(e) => this.handleKeyDown(e)}/>
+        <button className = "sendbtn"
+                onClick = {(e) => this.sendMsg(e)}>
+        Send</button>
+      </div>
     );
   }
 }
