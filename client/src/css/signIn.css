@@ -1,28 +1,47 @@
 .sign-in {
-    background-image: url("../image/signIn.jpeg");
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: url("../image/signIn.jpeg") no-repeat center;
+    background-size: cover;
     height: 100%;
-    position: absolute;
     width: 100%;
 }
 
-.sign-in .form {
-    height: 100px;
+.sign-in>.form {
+    position: absolute;
+    z-index: 1;
+    top: calc(50% - 20vh);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40vh;
+    min-height: 200px;
+    max-height: 600px;
     margin-top: -100px;
-    position: absolute;
     text-align: center;
-    top: 50%;
     width: 100%;
 }
 
-.sign-in .form .username-input {
+.form>.username-input {
     background-color: transparent;
     border: 1px solid #fff;
     border-radius: 5px;
     outline: none;
     padding-bottom: 15px;
     text-align: center;
-    width: 400px;
+    width: 50vh;
+    min-width: 100px;
+    max-width: 400px;
+    height: 6vh;
+    min-height: 50px;
+    max-height: 200px;
     font-size: 200%;
+    padding: 11px 15px;
+    margin-bottom: 5vh;
     letter-spacing: 3px;
 }
 
@@ -30,8 +49,20 @@
     font-size: 200%;
 }
 
-.sign-in .title,
-.sign-in .username-input {
+.form>.title,
+.form>.username-input {
     color: #fff;
     font-weight: 100;
+}
+
+.form>.intochat {
+    width: 30vh;
+    height: 5vh;
+    min-height: 50px;
+    max-height: 200px;
+    min-width: 100px;
+    max-width: 600px;
+    border: 1px solid #fff;
+    color: #fff;
+    background: transparent;
 }

@@ -4,7 +4,7 @@ const Singleton = (function () {
   let instance;
 
   function createInstance() {
-    const socket = io.connect();
+    const socket = io();
     return socket;
   }
 
@@ -14,6 +14,12 @@ const Singleton = (function () {
         instance = createInstance();
       }
       return instance;
+    },
+    closeConnection: function () {
+      if (instance) {
+        instance.removeAllListeners();
+        instance.close();
+      }
     }
   };
 })();
