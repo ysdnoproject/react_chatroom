@@ -28,6 +28,7 @@ export default class Chatroom extends Component {
       userLeft(data);
       scrollToBottom();
     });
+    this.socket.emit('userJoined');
   }
 
   sendMessage(newMessage) {
