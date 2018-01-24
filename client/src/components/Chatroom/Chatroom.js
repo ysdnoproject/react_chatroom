@@ -12,7 +12,9 @@ export default class Chatroom extends Component {
     super(props, context);
     this.socket = Singleton.getInstance();
 
-    this.socket.removeAllListeners();
+    this.socket.removeEventListener('newMessage');
+    this.socket.removeEventListener('userJoined');
+    this.socket.removeEventListener('userLeft');
     const {receiveMessage, userJoined, userLeft} = props;
     this.socket.on('newMessage', function (msg) {
       receiveMessage(msg);
