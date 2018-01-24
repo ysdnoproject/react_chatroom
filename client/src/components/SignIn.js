@@ -17,11 +17,17 @@ class SignIn extends Component {
 
   signIn(e){
     e.preventDefault();
-    const username = this.refs.username.value.trim();
 
+    const username = this.refs.username.value.trim();
     const socket = Singleton.getInstance();
+
+    // 在开启新的页面时候，关闭所有在线的监听
+    socket.removeAllListeners();
+
+    // 开启新的监听
     socket.open();
     const props = this.props;
+
     socket.on('signInSuccess', function (data) {
       props.history.push("/chat");
     });
