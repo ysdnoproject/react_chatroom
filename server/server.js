@@ -22,7 +22,7 @@ redisClient.on("error", function (err) {
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/index.html')));
 
 //prod env
-// app.get('/', (req, res) => res.render('index'));
+// app.get('/[chat]', (req, res) => res.render('index'));
 // app.set('views', __dirname + '/../client/build');
 // app.set('view engine', 'html');
 // app.engine('html', ejs.renderFile);
