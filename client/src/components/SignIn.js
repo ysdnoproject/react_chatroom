@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Singleton from '../socket';
+import MobileUtil from '../util/mobileUtil';
 import {withRouter} from "react-router-dom";
 import '../css/signIn.css';
 import swal from 'sweetalert2';
@@ -25,6 +26,7 @@ class SignIn extends Component {
     socket.on('signInSuccess', function (data) {
       props.history.push("/chat");
     });
+    console.log(MobileUtil.isMobile());
 
     if (username) {
       socket.emit('signIn', username);
