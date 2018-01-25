@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "core-js": "^2.5.3",
     "mobile-detect": "^1.4.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
