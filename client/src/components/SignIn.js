@@ -26,14 +26,15 @@ class SignIn extends Component {
     socket.on('signInSuccess', function (data) {
       props.history.push("/chat");
     });
-    console.log(MobileUtil.isMobile());
 
     if (username) {
       socket.emit('signIn', username);
     } else {
       swal('Please enter username', '', 'warning').then(
         function () {
-          inputWidget.focus();
+          if (!MobileUtil.isMobile()) {
+            inputWidget.focus();
+          }
         }
       );
     }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import swal from 'sweetalert2'
+import swal from 'sweetalert2';
+import MobileUtil from '../../util/mobileUtil';
 
 export default class MessageInput extends Component {
 
@@ -17,11 +18,15 @@ export default class MessageInput extends Component {
     if (text) {
       this.props.sendMessage(text);
       inputWidget.value = '';
-      inputWidget.focus();
+      if (!MobileUtil.isMobile()) {
+        inputWidget.focus();
+      }
     }else{
       swal('Please enter message', '', 'warning').then(
         function () {
-          inputWidget.focus();
+          if (!MobileUtil.isMobile()) {
+            inputWidget.focus();
+          }
         }
       );
     }
