@@ -11,7 +11,7 @@
     width: 100%;
 }
 
-.sign-in>.form {
+.sign-in > .form {
     position: absolute;
     z-index: 1;
     top: calc(50% - 20vh);
@@ -26,7 +26,7 @@
     width: 100%;
 }
 
-.form>.username-input {
+.form > .username-input {
     background-color: transparent;
     border: 1px solid #fff;
     border-radius: 5px;
@@ -49,13 +49,13 @@
     font-size: 200%;
 }
 
-.form>.title,
-.form>.username-input {
+.form > .title,
+.form > .username-input {
     color: #fff;
     font-weight: 100;
 }
 
-.form>.intochat {
+.form > .intochat {
     width: 30vh;
     height: 5vh;
     min-height: 50px;

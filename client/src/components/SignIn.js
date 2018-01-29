@@ -12,7 +12,7 @@ class SignIn extends Component {
     }
   }
 
-  signIn(e){
+  signIn(e) {
     e.preventDefault();
 
     const inputWidget = this.input;
@@ -46,15 +46,18 @@ class SignIn extends Component {
         <div className="form">
           <h3 className="title">Who are you?</h3>
           <input className="username-input" type="text"
-                 id = "username"
-                 ref = {(input) => {this.input = input;}}
+                 id="username"
+                 ref={(input) => {
+                   this.input = input;
+                 }}
                  onKeyDown={(e) => this.handleSignIn(e)}
                  maxLength={10}
                  autoFocus="true"
           />
           <button className="intochat"
                   onClick={(e) => this.signIn(e)}
-          >Join</button>
+          >Join
+          </button>
         </div>
       </div>
     );
