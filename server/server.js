@@ -30,6 +30,7 @@ app.engine('html', ejs.renderFile);
 
 //service-worker config
 app.use(express.static(__dirname + '/build'));
+app.use('/static', express.static(__dirname + '/build/static'));
 
 
 let users = new HashMap();
