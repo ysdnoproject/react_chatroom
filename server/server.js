@@ -29,15 +29,15 @@ app.get('/chat', (req, res) => res.render('index'));
 app.get('/service-worker.js', (req, res) => {
   res.sendFile(__dirname + '/build/service-worker.js');
 });
-app.get('/index.html', (req, res) => {
-  res.sendFile(__dirname + '/build/index.html');
-});
+// app.get('/index.html', (req, res) => {
+//   res.sendFile(__dirname + '/build/index.html');
+// });
+app.use('/', express.static(__dirname + '/build'));
+// app.use('/static', express.static(__dirname + '/build/static'));
 
 app.set('views', __dirname + '/build');
 app.set('view engine', 'html');
 app.engine('html', ejs.renderFile);
-
-app.use('/static', express.static(__dirname + '/build/static'));
 
 let users = new HashMap();
 
