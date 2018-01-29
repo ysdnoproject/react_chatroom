@@ -25,13 +25,14 @@ const store = createStore(reducer, initState)
 //   // Specify name here, actionsBlacklist, actionsCreators and other options if needed
 // ));
 
-//必须要div 否则 会报错(div总是会render /  应该用switch)
+//必须要用div或者switch包裹 否则 会报错(div会渲染所有匹配的，switch会渲染匹配到的第一个)
+//exact path只会匹配完全匹配的路径，否则会匹配所有以指定的string开头的（比如'/'会匹配所有路径，但是加了exact就只会匹配'/'）
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route path="/chat" component={ChatroomContainer}></Route>
-        <Route path="/" component={SignIn}/>
+        <Route exact path="/" component={SignIn}/>
+        <Route path="/chat" component={ChatroomContainer}/>
       </Switch>
     </BrowserRouter>
   </Provider>,
