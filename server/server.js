@@ -24,13 +24,14 @@ redisClient.on("error", function (err) {
 //prod env
 app.get('/', (req, res) => res.render('index'));
 app.get('/chat', (req, res) => res.render('index'));
-
-//service-worker config
-app.use(express.static(__dirname + '/build'));
-
 app.set('views', __dirname + '/build');
 app.set('view engine', 'html');
 app.engine('html', ejs.renderFile);
+
+//service-worker config
+app.use(express.static(__dirname + '/build'));
+app.use('/static', express.static(__dirname + '/build/static'));
+
 
 let users = new HashMap();
 
