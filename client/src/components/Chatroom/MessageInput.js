@@ -11,7 +11,7 @@ export default class MessageInput extends Component {
     }
   }
 
-  sendMsg(e){
+  sendMsg(e) {
     e.preventDefault();
     const inputWidget = this.input;
     const text = inputWidget.value.trim();
@@ -21,7 +21,7 @@ export default class MessageInput extends Component {
       if (!MobileUtil.isMobile()) {
         inputWidget.focus();
       }
-    }else{
+    } else {
       swal('Please enter message', '', 'warning').then(
         function () {
           if (!MobileUtil.isMobile()) {
@@ -36,14 +36,17 @@ export default class MessageInput extends Component {
     return (
       <div className="sent-frame">
         <input className="input-message"
-              id = 'msg-txt'
-              placeholder="Type here..."
-              autoFocus="true"
-              ref={(input) => {this.input = input}}
-              onKeyDown={(e) => this.handleKeyDown(e)}/>
-        <button className = "sendbtn"
-                onClick = {(e) => this.sendMsg(e)}>
-        Send</button>
+               id='msg-txt'
+               placeholder="Type here..."
+               autoFocus="true"
+               ref={(input) => {
+                 this.input = input
+               }}
+               onKeyDown={(e) => this.handleKeyDown(e)}/>
+        <button className="sendbtn"
+                onClick={(e) => this.sendMsg(e)}>
+          Send
+        </button>
       </div>
     );
   }
@@ -51,4 +54,4 @@ export default class MessageInput extends Component {
 
 MessageInput.propTypes = {
   sendMessage: PropTypes.func.isRequired,
-}
+};
