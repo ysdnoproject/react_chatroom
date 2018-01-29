@@ -57,8 +57,8 @@ const MessagePropTypes = PropTypes.oneOfType([
     type: PropTypes.oneOf([messageTypes.SYSTEM_MESSAGE]),
     text: PropTypes.string.isRequired,
   })
-]).isRequired
+]).isRequired;
 
 MessageItem.propTypes = {
   message: MessagePropTypes
-}
+};

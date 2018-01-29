@@ -46,7 +46,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('userJoined', function () {
-    redisClient.hget(address, "username", function (err, obj){
+    redisClient.hget(address, "username", function (err, obj) {
       if (obj) {
         users.set(address, obj);
         io.sockets.emit('userJoined', {
@@ -58,7 +58,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('newMessage', function (text) {
-    redisClient.hget(address, "username", function (err, obj){
+    redisClient.hget(address, "username", function (err, obj) {
       io.sockets.emit('newMessage', {
         username: obj,
         text: text
@@ -67,7 +67,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('signOut', function () {
-    redisClient.hget(address, "username", function (err, obj){
+    redisClient.hget(address, "username", function (err, obj) {
       if (obj) {
         users.remove(address);
 
@@ -80,7 +80,7 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function () {
-    redisClient.hget(address, "username", function (err, obj){
+    redisClient.hget(address, "username", function (err, obj) {
       if (obj) {
         users.remove(address);
 

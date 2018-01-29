@@ -10,10 +10,10 @@ const MessageList = ({messages}) => (
       )}
     </ul>
   </div>
-)
+);
 
-export default MessageList
+export default MessageList;
 
 MessageList.propTypes = {
   messages: PropTypes.array.isRequired,
-}
+};
