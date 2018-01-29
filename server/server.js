@@ -21,14 +21,15 @@ redisClient.on("error", function (err) {
 //dev env
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/index.html')));
 
-//prod env
+// //prod env
 // app.get('/', (req, res) => res.render('index'));
 // app.get('/chat', (req, res) => res.render('index'));
-// app.set('views', __dirname + '/../client/build');
+// app.set('views', __dirname + '/build');
 // app.set('view engine', 'html');
 // app.engine('html', ejs.renderFile);
-// app.use('/static', express.static(__dirname + '/../client/build/static'));
-// app.use('/service-worker.js', express.static(__dirname + '/../client/build'));
+//
+// //service-worker config
+// app.use(express.static(__dirname + '/build'));
 
 let users = new HashMap();
 
