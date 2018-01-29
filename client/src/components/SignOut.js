@@ -21,7 +21,8 @@ class SignOut extends Component {
       <div className="sign-out">
         <button className="sign-out-btn"
                 onClick={(e) => this.handleSignOut(e)}
-        >SignOut</button>
+        >SignOut
+        </button>
       </div>
     );
   }
