@@ -35,7 +35,7 @@ app.use(express.static(__dirname + '/build'));
 let users = new HashMap();
 
 io.sockets.on('connection', function (socket) {
-  let address = socket.handshake.address;
+  let address = socket.handshake.headers['x-forwarded-for'] || socket.handshake.address;
 
   socket.on('signIn', function (username) {
     redisClient.hset(address, "username", username);
