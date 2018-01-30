@@ -1,6 +1,7 @@
 import React from 'react';
 import * as messageTypes from '../../constants/MessageTypes';
 import PropTypes from 'prop-types';
+import Linkify from "react-linkify";
 
 export default class MessageItem extends React.Component {
   render() {
@@ -11,7 +12,7 @@ export default class MessageItem extends React.Component {
         return (
           <li className="user-message">
             <span className="user-name" style={{color: usernameColor}}>{message.username}:</span>
-            <span className="message-body">{message.text}</span>
+            <span className="message-body"><Linkify>{message.text}</Linkify></span>
           </li>
         );
       case messageTypes.SYSTEM_MESSAGE:
