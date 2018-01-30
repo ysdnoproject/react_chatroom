@@ -3,8 +3,6 @@
 ## 感谢[Kisn](https://github.com/Kisnnnnn)的友情帮助
 
 ## 用到的技术：
-首先需要安装[redis](https://redis.io/)并在默认端口(6379)启动
-
 ### client: 
 [react js](https://reactjs.org/) 
 [redux](https://github.com/reactjs/redux) 
@@ -28,6 +26,7 @@
 
 
 ## 搭建:
+首先需要安装[redis](https://redis.io/)并在默认端口(6379)启动
 ### production:
 ```
 cd project_path
