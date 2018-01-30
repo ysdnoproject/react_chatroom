@@ -34,6 +34,7 @@ app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/
 let users = new HashMap();
 
 io.sockets.on('connection', function (socket) {
+  //see https://stackoverflow.com/questions/14382725/how-to-get-the-correct-ip-address-of-a-client-into-a-node-socket-io-app-hosted-o
   let address = socket.handshake.headers['x-forwarded-for'] || socket.handshake.address;
 
   socket.on('signIn', function (username) {
