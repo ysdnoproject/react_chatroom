@@ -27,6 +27,7 @@
 
 ## 搭建:
 首先需要安装[redis](https://redis.io/)并在默认端口(6379)启动
+或者修改[server.js](server/server.js)里L13,redis.createClient(redisUrl);
 ### production:
 ```
 cd project_path
