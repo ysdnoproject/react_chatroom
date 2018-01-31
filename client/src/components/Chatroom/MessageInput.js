@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert2';
-import MobileUtil from '../../util/mobileUtil';
+import MobileUtil from '../../util/MobileUtil';
 
 export default class MessageInput extends Component {
 
