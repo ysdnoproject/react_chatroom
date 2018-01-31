@@ -1,7 +1,7 @@
 import React from 'react';
 import * as messageTypes from '../../constants/MessageTypes';
 import PropTypes from 'prop-types';
-import Linkify from "react-linkify";
+import Linkify from "../../util/Linkify";
 
 export default class MessageItem extends React.Component {
   render() {
