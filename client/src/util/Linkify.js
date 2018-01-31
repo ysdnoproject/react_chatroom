@@ -9,6 +9,10 @@ export default class Linkify extends React.Component {
     linkify.tlds(tlds).set({ fuzzyIP: true });
     let matches = linkify.match(content);
 
+    if (!matches) {
+      return content;
+    }
+
     let startIndex = 0;
     let elements = [];
     matches.forEach((match, index) => {
