@@ -12,6 +12,7 @@
 [prop-types](https://github.com/facebook/prop-types) 
 [sweetalert2](https://github.com/sweetalert2/sweetalert2)
 [mobile-detect](https://github.com/hgoebl/mobile-detect.js)
+[linkify-it](https://github.com/markdown-it/linkify-it)
 
 ### server:
 [expressjs](http://expressjs.com/) 
