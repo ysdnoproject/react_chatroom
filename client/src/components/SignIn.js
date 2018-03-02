@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Singleton from '../socket';
 import MobileUtil from '../util/MobileUtil';
-import {withRouter} from "react-router-dom";
 import '../css/signIn.css';
 import swal from 'sweetalert2';
 
@@ -64,4 +63,4 @@ class SignIn extends Component {
   }
 }
 
-export default withRouter(SignIn);
+export default SignIn;
