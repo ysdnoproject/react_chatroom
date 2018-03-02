@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Singleton from '../socket';
-import {withRouter} from "react-router-dom";
 import '../css/signOut.css';
 
 class SignOut extends Component {
@@ -21,10 +20,11 @@ class SignOut extends Component {
       <div className="sign-out">
         <button className="sign-out-btn"
                 onClick={(e) => this.handleSignOut(e)}
-        >SignOut</button>
+        >SignOut
+        </button>
       </div>
     );
   }
 }
 
-export default withRouter(SignOut);
+export default SignOut;

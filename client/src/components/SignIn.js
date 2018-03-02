@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Singleton from '../socket';
-import {withRouter} from "react-router-dom";
+import MobileUtil from '../util/MobileUtil';
 import '../css/signIn.css';
 import swal from 'sweetalert2';
 
@@ -11,7 +11,7 @@ class SignIn extends Component {
     }
   }
 
-  signIn(e){
+  signIn(e) {
     e.preventDefault();
 
     const inputWidget = this.input;
@@ -31,7 +31,9 @@ class SignIn extends Component {
     } else {
       swal('Please enter username', '', 'warning').then(
         function () {
-          inputWidget.focus();
+          if (!MobileUtil.isMobile()) {
+            inputWidget.focus();
+          }
         }
       );
     }
@@ -43,19 +45,22 @@ class SignIn extends Component {
         <div className="form">
           <h3 className="title">Who are you?</h3>
           <input className="username-input" type="text"
-                 id = "username"
-                 ref = {(input) => {this.input = input;}}
+                 id="username"
+                 ref={(input) => {
+                   this.input = input;
+                 }}
                  onKeyDown={(e) => this.handleSignIn(e)}
                  maxLength={10}
                  autoFocus="true"
           />
           <button className="intochat"
                   onClick={(e) => this.signIn(e)}
-          >Join</button>
+          >Join
+          </button>
         </div>
       </div>
     );
   }
 }
 
-export default withRouter(SignIn);
+export default SignIn;

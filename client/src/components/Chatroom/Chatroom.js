@@ -28,6 +28,7 @@ export default class Chatroom extends Component {
       userLeft(data);
       scrollToBottom();
     });
+    this.socket.emit('userJoined');
   }
 
   sendMessage(newMessage) {
@@ -41,7 +42,7 @@ export default class Chatroom extends Component {
   render() {
     return (
       <div className="chat">
-        <SignOut />
+        <SignOut history={this.props.history}/>
         <MessageList messages={this.props.messages}/>
         <MessageInput sendMessage={(msg) => this.sendMessage(msg)}/>
       </div>
@@ -62,4 +63,4 @@ Chatroom.propTypes = {
   userLeft: PropTypes.func.isRequired,
   sendMessage: PropTypes.func.isRequired,
   messages: PropTypes.array.isRequired,
-}
+};

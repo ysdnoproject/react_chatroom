@@ -7,12 +7,12 @@ const mapStateToProps = state => {
   return {
     messages: state.messages,
   }
-}
+};
 
 const ChatroomContainer = connect(
   mapStateToProps,
   actions
-)(Chatroom)
+)(Chatroom);
 
 // difference???
 // const mapDispatchToProps = (dispatch, ownProps) => {
@@ -29,4 +29,4 @@ const ChatroomContainer = connect(
 //   mapDispatchToProps
 // )(Chatroom)
 
-export default ChatroomContainer
+export default ChatroomContainer;

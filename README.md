@@ -3,8 +3,6 @@
 ## 感谢[Kisn](https://github.com/Kisnnnnn)的友情帮助
 
 ## 用到的技术：
-首先需要安装[redis](https://redis.io/)并在默认端口(6379)启动
-
 ### client: 
 [react js](https://reactjs.org/) 
 [redux](https://github.com/reactjs/redux) 
@@ -13,6 +11,8 @@
 [socket.io-client](https://socket.io/) 
 [prop-types](https://github.com/facebook/prop-types) 
 [sweetalert2](https://github.com/sweetalert2/sweetalert2)
+[mobile-detect](https://github.com/hgoebl/mobile-detect.js)
+[linkify-it](https://github.com/markdown-it/linkify-it)
 
 ### server:
 [expressjs](http://expressjs.com/) 
@@ -27,6 +27,8 @@
 
 
 ## 搭建:
+首先需要安装[redis](https://redis.io/)并在默认端口(6379)启动
+或者修改[server.js](server/server.js)里L13,redis.createClient(redisUrl);
 ### production:
 ```
 cd project_path
@@ -71,3 +73,7 @@ npm start
 #### 更新 2018年01月23日15:43:54
 - 优化界面布局
 - 新增按钮:进入、发送 优化交互
+
+### 新增功能
+#### 2018/01/30 17:36:26
+- 将输入的url自动转换为Link

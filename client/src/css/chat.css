@@ -4,7 +4,6 @@
     width: 100%;
 }
 
-
 /* Font */
 
 .messages {
@@ -21,7 +20,6 @@
     margin: 5px;
     text-align: center;
 }
-
 
 /* Messages */
 
@@ -86,7 +84,6 @@ ul {
     border-right: 10px solid #ececec;
     border-bottom: 8px solid transparent;
 }
-
 
 /* Input */
 

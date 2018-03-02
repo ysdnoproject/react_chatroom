@@ -21,37 +21,46 @@ redisClient.on("error", function (err) {
 //dev env
 // app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/../client/public/index.html')));
 
+
 //prod env
 app.get('/', (req, res) => res.render('index'));
 app.get('/chat', (req, res) => res.render('index'));
 app.set('views', __dirname + '/build');
 app.set('view engine', 'html');
 app.engine('html', ejs.renderFile);
-app.use('/static', express.static(__dirname + '/build/static'));
-app.use('/service-worker.js', express.static(__dirname + '/build'));
+
+//service-worker config
+app.use(express.static(__dirname + '/build'));
 
 let users = new HashMap();
 
 io.sockets.on('connection', function (socket) {
-  let address = socket.handshake.address;
+  //see https://stackoverflow.com/questions/14382725/how-to-get-the-correct-ip-address-of-a-client-into-a-node-socket-io-app-hosted-o
+  let address = socket.handshake.headers['x-forwarded-for'] || socket.handshake.address;
 
   socket.on('signIn', function (username) {
     redisClient.hset(address, "username", username);
-    users.set(address, username);
 
     io.sockets.emit('signInSuccess', {
       username: username,
       userNumber: users.count()
     });
+  });
 
-    io.sockets.emit('userJoined', {
-      username: username,
-      userNumber: users.count()
+  socket.on('userJoined', function () {
+    redisClient.hget(address, "username", function (err, obj) {
+      if (obj) {
+        users.set(address, obj);
+        io.sockets.emit('userJoined', {
+          username: obj,
+          userNumber: users.count()
+        });
+      }
     });
   });
 
   socket.on('newMessage', function (text) {
-    redisClient.hget(address, "username", function (err, obj){
+    redisClient.hget(address, "username", function (err, obj) {
       io.sockets.emit('newMessage', {
         username: obj,
         text: text
@@ -60,7 +69,20 @@ io.sockets.on('connection', function (socket) {
   });
 
   socket.on('signOut', function () {
-    redisClient.hget(address, "username", function (err, obj){
+    redisClient.hget(address, "username", function (err, obj) {
+      if (obj) {
+        users.remove(address);
+
+        io.sockets.emit('userLeft', {
+          username: obj,
+          userNumber: users.count()
+        });
+      }
+    });
+  });
+
+  socket.on('disconnect', function () {
+    redisClient.hget(address, "username", function (err, obj) {
       if (obj) {
         users.remove(address);
 
