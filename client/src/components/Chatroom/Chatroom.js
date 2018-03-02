@@ -42,7 +42,7 @@ export default class Chatroom extends Component {
   render() {
     return (
       <div className="chat">
-        <SignOut/>
+        <SignOut history={this.props.history}/>
         <MessageList messages={this.props.messages}/>
         <MessageInput sendMessage={(msg) => this.sendMessage(msg)}/>
       </div>
