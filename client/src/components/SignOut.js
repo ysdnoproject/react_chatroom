@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Singleton from '../socket';
-import {withRouter} from "react-router-dom";
 import '../css/signOut.css';
 
 class SignOut extends Component {
@@ -28,4 +27,4 @@ class SignOut extends Component {
   }
 }
 
-export default withRouter(SignOut);
+export default SignOut;
