@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Singleton from '../../socket';
 import SignOut from "../SignOut";
 import MessageList from "./MessageList";
@@ -15,7 +15,7 @@ export default class Chatroom extends Component {
     this.socket.removeEventListener('newMessage');
     this.socket.removeEventListener('userJoined');
     this.socket.removeEventListener('userLeft');
-    const {receiveMessage, userJoined, userLeft} = props;
+    const { receiveMessage, userJoined, userLeft, systemError } = props;
     this.socket.on('newMessage', function (msg) {
       receiveMessage(msg);
       scrollToBottom();
@@ -28,11 +28,15 @@ export default class Chatroom extends Component {
       userLeft(data);
       scrollToBottom();
     });
+    this.socket.on('systemError', function (data) {
+      systemError(data);
+      scrollToBottom();
+    });
     this.socket.emit('userJoined');
   }
 
   sendMessage(newMessage) {
-    const {sendMessage} = this.props;
+    const { sendMessage } = this.props;
     if (newMessage) {
       sendMessage(newMessage);
       this.socket.emit('newMessage', newMessage);
@@ -42,9 +46,9 @@ export default class Chatroom extends Component {
   render() {
     return (
       <div className="chat">
-        <SignOut history={this.props.history}/>
-        <MessageList messages={this.props.messages}/>
-        <MessageInput sendMessage={(msg) => this.sendMessage(msg)}/>
+        <SignOut history={ this.props.history }/>
+        <MessageList messages={ this.props.messages }/>
+        <MessageInput sendMessage={ (msg) => this.sendMessage(msg) }/>
       </div>
     );
   }

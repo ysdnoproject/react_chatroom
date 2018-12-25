@@ -1,4 +1,4 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as actions from '../action/actions';
 import Chatroom from '../components/Chatroom/Chatroom';
 // import bindActionCreators from "redux/src/bindActionCreators";

@@ -2,12 +2,12 @@ import React from 'react';
 import MessageItem from "./MessageItem";
 import PropTypes from 'prop-types';
 
-const MessageList = ({messages}) => (
+const MessageList = ({ messages }) => (
   <div className="chat-area">
     <ul className="messages">
-      {messages.map((message, index) =>
-        <MessageItem message={message} key={index}/>
-      )}
+      { messages.map((message, index) =>
+        <MessageItem message={ message } key={ index }/>
+      ) }
     </ul>
   </div>
 );

@@ -5,20 +5,20 @@ import Linkify from "../../util/Linkify";
 
 export default class MessageItem extends React.Component {
   render() {
-    const {message} = this.props;
+    const { message } = this.props;
     switch (message.type) {
       case messageTypes.USER_MESSAGE:
         const usernameColor = this._getUsernameColor(message.username);
         return (
           <li className="user-message">
-            <span className="user-name" style={{color: usernameColor}}>{message.username}:</span>
-            <span className="message-body"><Linkify>{message.text}</Linkify></span>
+            <span className="user-name" style={ { color: usernameColor } }>{ message.username }:</span>
+            <span className="message-body"><Linkify>{ message.text }</Linkify></span>
           </li>
         );
       case messageTypes.SYSTEM_MESSAGE:
         return (
           <li className="system-message">
-            {message.text}
+            { message.text }
           </li>
         );
       default:
