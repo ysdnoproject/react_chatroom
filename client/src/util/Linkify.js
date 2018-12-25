@@ -17,7 +17,7 @@ export default class Linkify extends React.Component {
     let elements = [];
     matches.forEach((match, index) => {
       elements.push(content.slice(startIndex, match.index));
-      elements.push(<a href={match.url} key={index} target="_blank">{match.raw}</a>);
+      elements.push(<a href={ match.url } key={ index } target="_blank">{ match.raw }</a>);
       startIndex = match.lastIndex;
     });
     elements.push(content.slice(startIndex));
@@ -28,7 +28,7 @@ export default class Linkify extends React.Component {
   render() {
     const parsedChildren = this.parse(this.props.children);
 
-    return <span>{parsedChildren}</span>;
+    return <span>{ parsedChildren }</span>;
   }
 }
 
