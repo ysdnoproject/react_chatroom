@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Singleton from '../socket';
 import '../css/signOut.css';
 
@@ -19,7 +19,7 @@ class SignOut extends Component {
     return (
       <div className="sign-out">
         <button className="sign-out-btn"
-                onClick={(e) => this.handleSignOut(e)}
+                onClick={ (e) => this.handleSignOut(e) }
         >SignOut
         </button>
       </div>

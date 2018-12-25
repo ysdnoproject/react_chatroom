@@ -1,4 +1,4 @@
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
 import messages from './MessageReducer';
 
-export default combineReducers({messages});
+export default combineReducers({ messages });

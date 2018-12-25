@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import swal from 'sweetalert2';
 import MobileUtil from '../../util/MobileUtil';
@@ -39,12 +39,12 @@ export default class MessageInput extends Component {
                id='msg-txt'
                placeholder="Type here..."
                autoFocus="true"
-               ref={(input) => {
+               ref={ (input) => {
                  this.input = input
-               }}
-               onKeyDown={(e) => this.handleKeyDown(e)}/>
+               } }
+               onKeyDown={ (e) => this.handleKeyDown(e) }/>
         <button className="sendbtn"
-                onClick={(e) => this.sendMsg(e)}>
+                onClick={ (e) => this.sendMsg(e) }>
           Send
         </button>
       </div>

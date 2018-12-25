@@ -1,6 +1,6 @@
 import * as actionTypes from '../constants/ActionTypes';
 import * as messageTypes from '../constants/MessageTypes';
-import {USER_MESSAGE} from "../constants/MessageTypes";
+import { USER_MESSAGE } from "../constants/MessageTypes";
 
 //combineReducers will check your reducers by passing undefined to them;
 // this is done even if you specify initial state to Redux.createStore(combineReducers(...), initialState).
@@ -19,17 +19,17 @@ export default function messages(state = [], action) {
     case actionTypes.USER_JOINED:
       return state.concat([{
         type: messageTypes.SYSTEM_MESSAGE,
-        text: `${action.data.username} joined! Now ${action.data.userNumber} participants.`
+        text: `${ action.data.username } joined! Now ${ action.data.userNumber } participants.`
       }]);
     case actionTypes.USER_LEFT:
       return state.concat([{
         type: messageTypes.SYSTEM_MESSAGE,
-        text: `${action.data.username} left! Now ${action.data.userNumber} participants.`
+        text: `${ action.data.username } left! Now ${ action.data.userNumber } participants.`
       }]);
     case actionTypes.SYSTEM_ERROR:
       return state.concat([{
         type: messageTypes.SYSTEM_MESSAGE,
-        text: `${action.error.errorMessage}`
+        text: `${ action.error.errorMessage }`
       }]);
     case actionTypes.SEND_MESSAGE:
     default:

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Singleton from '../socket';
 import MobileUtil from '../util/MobileUtil';
 import '../css/signIn.css';
@@ -46,15 +46,15 @@ class SignIn extends Component {
           <h3 className="title">Who are you?</h3>
           <input className="username-input" type="text"
                  id="username"
-                 ref={(input) => {
+                 ref={ (input) => {
                    this.input = input;
-                 }}
-                 onKeyDown={(e) => this.handleSignIn(e)}
-                 maxLength={10}
+                 } }
+                 onKeyDown={ (e) => this.handleSignIn(e) }
+                 maxLength={ 10 }
                  autoFocus="true"
           />
           <button className="intochat"
-                  onClick={(e) => this.signIn(e)}
+                  onClick={ (e) => this.signIn(e) }
           >Join
           </button>
         </div>
