@@ -27,3 +27,10 @@ export function userLeft(data) {
     data
   }
 }
+
+export function systemError(error) {
+  return {
+    type: types.SYSTEM_ERROR,
+    error
+  }
+}

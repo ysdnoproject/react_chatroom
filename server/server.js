@@ -15,6 +15,12 @@ const HashMap = require('hashmap');
 
 redisClient.on("error", function (err) {
   console.log("Error " + err);
+
+  io.sockets.emit('systemError', {
+    errorType: 'redisError',
+    nativeError: err,
+    errorMessage: err
+  });
 });
 
 // Return index.html for '/'

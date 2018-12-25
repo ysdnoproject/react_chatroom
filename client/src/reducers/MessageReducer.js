@@ -26,6 +26,11 @@ export default function messages(state = [], action) {
         type: messageTypes.SYSTEM_MESSAGE,
         text: `${action.data.username} left! Now ${action.data.userNumber} participants.`
       }]);
+    case actionTypes.SYSTEM_ERROR:
+      return state.concat([{
+        type: messageTypes.SYSTEM_MESSAGE,
+        text: `${action.error.errorMessage}`
+      }]);
     case actionTypes.SEND_MESSAGE:
     default:
       return state;
