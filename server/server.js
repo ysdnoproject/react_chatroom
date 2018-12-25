@@ -72,12 +72,6 @@ io.sockets.on('connection', function (socket) {
         text: text
       });
     });
-
-    io.sockets.emit('systemError', {
-      errorType: 'redisError',
-      nativeError: 'err',
-      errorMessage: 'err'
-    });
   });
 
   socket.on('signOut', function () {
