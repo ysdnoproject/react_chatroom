@@ -10,7 +10,7 @@ http.listen(port, () => {
 });
 const io = require('socket.io')(http);
 const redis = require("redis");
-const redisClient = redis.createClient('redis://h:p7e93514a9ac5accb10be5ff60047fb1c28a2b77e3c07e34c15ed123379769d63@ec2-3-221-130-130.compute-1.amazonaws.com:17959');
+const redisClient = redis.createClient(process.env.REDIS_URL);
 const HashMap = require('hashmap');
 
 redisClient.on("error", function (err) {
