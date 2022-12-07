@@ -9,7 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.7",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "hashmap": "^2.3.0",
     "redis": "^2.8.0",
     "socket.io": "^2.0.4"
